@@ -16,8 +16,8 @@ const publisher = redis.createClient({
   
  
 subscriber.on("subscribe", function(channel, count) {
-  console.log(`Server ${APPID} subscribed successfully to livechat`)
-  publisher.publish("livechat", "a message");
+  console.log(`Server ${APPID} subscribed successfully to livechat|| ${channel}:${count}`)
+  publisher.publish("livechat", "a message ---");
 });
  
 subscriber.on("message", function(channel, message) {
@@ -59,7 +59,7 @@ websocket.on("request", request=> {
         publisher.publish("livechat", message.utf8Data)
     })
 
-    setTimeout(() => con.send(`Connected successfully to server ${APPID}`), 5000)
+    setTimeout(() => con.send(`Connected successfully to server - -${APPID}`), 5000)
     connections.push(con)
   
 
