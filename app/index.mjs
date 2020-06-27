@@ -1,23 +1,35 @@
 import http from "http";
-import ws from "websocket"
-import redis from "redis";
-const APPID = process.env.APPID;
-let connections = [];
-const WebSocketServer = ws.server
+// import ws from "websocket"
+// import redis from "redis";
+import socketIO from "socket.io";
+import redisAdapter from 'socket.io-redis';
+import express from "express";
+import { nameSpacesHandler } from "./namespaces/index.mjs"
+import {  REDIS_HOST, REDIS_PORT } from "./config/redis.mjs"
+// const APPID = process.env.APPID;
+// let connections = [];
+// const WebSocketServer = ws.server
+const app = new express();
 
+app.get('/', (req, res) => {
+  res.send(
+    'socket.io demo'
+  );
+});
 
-const subscriber = redis.createClient({
-  port      : 6379,              
-  host      : 'rds'} );
+const server = http.createServer(app);
+const io = new socketIO(server,
+  {
+    serveClient: false,
+    adapter: redisAdapter({ host: REDIS_HOST, port: REDIS_PORT }),
+    cookie: false,
+  }
+  );
 
-const publisher = redis.createClient({
-  port      : 6379,              
-  host      : 'rds'} );
-  
- 
-subscriber.on("subscribe", function(channel, count) {
-  console.log(`Server ${APPID} subscribed successfully to livechat|| ${channel}:${count}`)
-  publisher.publish("livechat", "a message ---");
+nameSpacesHandler(io);
+
+server.listen(3000, () => {
+  console.log('listening on *:3000');
 });
 // const subscriber = redis.createClient({
 //   port      : 6379,
