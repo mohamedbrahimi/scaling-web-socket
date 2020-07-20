@@ -10,7 +10,7 @@ const nameSpacesHandler = (io) => {
           socket.join(room);
           console.log(`user join into: ${room}`);
 
-          socket.on('p2p-message', (message) => {
+          socket.on(`p2p-message-id-${room}`, (message) => {
               console.log(`message users/p2p/messages/ room/message: ${message}`);
               produceP2pMessage(message);
           });
