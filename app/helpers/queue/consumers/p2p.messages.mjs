@@ -10,7 +10,7 @@ import queueConfig from '../config.mjs';
 
 const Consumer = redisSMQ.Consumer;
 
-class P2pMessagesConsumer extends Consumer {
+class P2pMessagesConsumer extends redisSMQ.Consumer {
   constructor(io) {
     super(queueConfig);
     this.io = io;
