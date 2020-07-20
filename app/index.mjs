@@ -42,15 +42,15 @@ server.listen(8080, () => {
 
 
 // subscriber.on("subscribe", function(channel, count) {
-//   console.log(`Server ${APPID} subscribed successfully to livechat|| ${channel}:${count}`)
+//   console.log(`Server ${APP_ID} subscribed successfully to livechat|| ${channel}:${count}`)
 //   publisher.publish("livechat", "a message ---");
 // });
 
 // subscriber.on("message", function(channel, message) {
 //   try{
 //   //when we receive a message I want t
-//   console.log(`Server ${APPID} received message in channel ${channel} msg: ${message}`);
-//   connections.forEach(c => c.send(APPID + ":" + message))
+//   console.log(`Server ${APP_ID} received message in channel ${channel} msg: ${message}`);
+//   connections.forEach(c => c.send(APP_ID + ":" + message))
 
 //   }
 //   catch(ex){
@@ -81,11 +81,11 @@ server.listen(8080, () => {
 //     con.on("close", () => console.log("CLOSED!!!"))
 //     con.on("message", message => {
 //         //publish the message to redis
-//         console.log(`${APPID} Received message ${message.utf8Data}`)
+//         console.log(`${APP_ID} Received message ${message.utf8Data}`)
 //         publisher.publish("livechat", message.utf8Data)
 //     })
 
-//     setTimeout(() => con.send(`Connected successfully to server - -${APPID}`), 5000)
+//     setTimeout(() => con.send(`Connected successfully to server - -${APP_ID}`), 5000)
 //     connections.push(con)
 
 
