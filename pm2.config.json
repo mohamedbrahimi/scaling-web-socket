@@ -1,0 +1,11 @@
+{
+  "apps" : [{
+    "name"        : "app",
+    "script"      : "./app/index.mjs",
+    "instances"  : 1
+  },{
+    "name"        : "worker-p2p-messages",
+    "script"      : "./app/workers/p2p-messages.worker.mjs",
+    "instances"  : 1
+  }]
+}
