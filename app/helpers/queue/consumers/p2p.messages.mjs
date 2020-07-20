@@ -18,6 +18,7 @@ class P2pMessagesConsumer extends redisSMQ.Consumer {
 
   consume(message, cb) {
     try {
+      // console.log(message.getBody())
       console.warn(`p2p message consumed message ${JSON.stringify(message)}`);
       const data = message;
       this.io.of(P2P_MESSAGES_WORKER_NAME_SPACE).to(data.driver).emit(P2P_MESSAGES_SOCKET_EVENT, data);
