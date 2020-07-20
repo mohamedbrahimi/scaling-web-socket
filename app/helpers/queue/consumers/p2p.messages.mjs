@@ -20,8 +20,14 @@ class P2pMessagesConsumer extends redisSMQ.Consumer {
     try {
       // console.log(message.getBody())
       console.warn(`p2p message consumed message ${JSON.stringify(message)}`);
-      const data = message;
-      this.io.of(P2P_MESSAGES_WORKER_NAME_SPACE).to(data.driver).emit(P2P_MESSAGES_SOCKET_EVENT, data);
+      console.log(message);
+      console.log(message.to);
+
+       const data = message;
+      // console.log(...data)
+      // console.log(data)
+      // console.log(data['id'], data.id, message.id)
+      this.io.of(P2P_MESSAGES_WORKER_NAME_SPACE).to(data.to).emit(P2P_MESSAGES_SOCKET_EVENT, data);
       cb();
     } catch (err) {
       console.warn("p2p-messages socket emit error")
