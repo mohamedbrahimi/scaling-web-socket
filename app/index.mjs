@@ -6,7 +6,8 @@ import redisAdapter from 'socket.io-redis';
 import express from "express";
 import { nameSpacesHandler } from "./namespaces/index.mjs"
 import {  REDIS_HOST, REDIS_PORT } from "./config/redis.mjs"
-// const APPID = process.env.APPID;
+const APP_ID = process.env.APPID || 8080;
+
 // let connections = [];
 // const WebSocketServer = ws.server
 const app = new express();
