@@ -29,8 +29,8 @@ const io = new socketIO(server,
 
 nameSpacesHandler(io);
 
-server.listen(3000, () => {
-  console.log('listening on *:3000');
+server.listen(8080, () => {
+  console.log(`listening on *:${APP_ID}`);
 });
 // const subscriber = redis.createClient({
 //   port      : 6379,
