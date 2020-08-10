@@ -1,5 +1,5 @@
 import { P2P_MESSAGES_WORKER_NAME_SPACE } from "../config/constants.mjs";
-import { produceP2pMessage } from "../helpers/queue/producers/index.mjs";
+import { produceP2pMessage, produceP2pMessageForStorage } from "../helpers/queue/producers/index.mjs";
 const nameSpacesHandler = (io) => {
 
     const usersP2pMessages = io.of(P2P_MESSAGES_WORKER_NAME_SPACE);
