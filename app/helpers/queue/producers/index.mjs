@@ -1,6 +1,7 @@
 import redisSMQ from 'redis-smq';
 import {
-   P2P_MESSAGES_REDIS_TOPIC
+   P2P_MESSAGES_REDIS_TOPIC,
+   STORE_P2P_MESSAGES_REDIS_TOPIC,
 } from '../../../config/constants.mjs';
 import config from '../config.mjs';
 
