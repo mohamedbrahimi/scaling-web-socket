@@ -26,3 +26,19 @@ export function produceP2pMessage(message) {
         return false;
     }
 }
+
+export function produceP2pMessageForStorage(message) {
+    try {
+        const encodedMessage = message;
+        const messageObj = new Message();
+        messageObj.setBody(encodedMessage);
+        console.debug(`producing p2p messages for storage: ${JSON.stringify(encodedMessage)}`);
+        producerP2pMessagesForStorage.produceMessage(messageObj, (err) => {
+            if (err) { console.warn(err); return false; }
+            return true;
+        });
+        return true;
+    } catch (e) {
+        return false;
+    }
+}
