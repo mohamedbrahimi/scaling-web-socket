@@ -13,6 +13,7 @@ const nameSpacesHandler = (io) => {
           socket.on(`p2p-message-id-${room}`, (message) => {
               console.log(`message users/p2p/messages/ room/message: ${message}`);
               produceP2pMessage(message);
+              produceP2pMessageForStorage(message);
           });
       });
       socket.on('room.leave', (room) => { socket.leave(room, ()=>{}); console.log(`user leave from: ${room}`);});
