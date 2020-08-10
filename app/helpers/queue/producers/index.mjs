@@ -9,6 +9,7 @@ const Producer = redisSMQ.Producer;
 const Message = redisSMQ.Message;
 
 const producerP2pMessages = new Producer(P2P_MESSAGES_REDIS_TOPIC, config);
+const producerP2pMessagesForStorage = new Producer(STORE_P2P_MESSAGES_REDIS_TOPIC, config);
 
 export function produceP2pMessage(message) {
     try {
